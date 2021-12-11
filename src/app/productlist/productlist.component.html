@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">UserCrud</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="addproduct"> - Add <span class="sr-only"></span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+<h2 class="text-center mt-5">Users List</h2>
+<table class="table table-striped mt-5">
+  <thead>
+  <tr class="table-success">
+    <th scope="col">ID</th>
+    <th scope="col">Title</th>
+    <th scope="col">First-name</th>
+    <th scope="col">Last-name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngIf="products.length ==0">
+    <td colspan="5" style="text-align: center"><h2>There are no products yet</h2></td>
+  </tr>
+  <tr *ngFor="let product of products">
+    <th >{{product.id}}</th>
+    <td>{{product.title}}</td>
+    <td>{{product.fname}}</td>
+    <td>{{product.lname}}</td>
+    <td>{{product.address}}</td>
+    <td>
+      <button type="button" class="btn btn-outline-info" (click)="goToViewProduct(product.id)">View</button>&nbsp;
+      <button type="button" class="btn btn-outline-primary" (click)="goToUpdateProduct(product.id)">Edit</button>&nbsp;
+      <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(product.id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
