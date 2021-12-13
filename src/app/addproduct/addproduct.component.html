@@ -1,5 +1,14 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href=" ">UserCrud</a>
+  <a class="navbar-brand" href="productlist">UserCrud</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -16,31 +25,127 @@
     </form>
   </div>
 </nav>
-<div class="container">
-  <h2 class="text-center mt-5"> Add new User</h2>
-  <form #addproductform="ngForm" (ngSubmit)="addformsubmit()">
-    {{product | json}}
-    <div class="form-group">
-      <label for="id">Id User   :</label>
-      <input type="text" class="form-control" required [(ngModel)]="product.id" name="id">
+
+
+<form #addproductform="ngForm" (ngSubmit)="addformsubmit()">
+  <div id="accordion">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="text-center">
+                  <h3>Add data crud</h3>
+              </div>
+          </div>
+      </div>
+  
+      <div class="card card-default">
+          <div class="card-header">
+              <h4 class="card-title">
+                  <a data-toggle="collapse" data-parent="#accordion">
+                      <i class="glyphicon glyphicon-search text-gold"></i>
+                      <b>เพิ่มข้อมูลตามที่หัวข้อกำหนด</b>
+                  </a>
+              </h4>
+          </div>
+          
+          <div id="collapse1" class="collapse show">
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-4 col-lg-2">
+                          <div class="form-group">
+                              <label class="control-label">title</label>
+                              <select class="form-control" required [(ngModel)]="product.title" name="title">
+                                <option disabled>คำนำหน้า</option>
+                                <option>เลือกคำนำหน้า</option>
+                                <option>Miss</option>
+                                <option>Mrs.</option>
+                                <option>Mr.</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="col-md-1 col-lg-5">
+                          <div class="form-group">
+                              <label for="fname">First Name</label>
+                              <input type="text" class="form-control" required [(ngModel)]="product.fname" name="fname">
+                          </div>
+                      </div>
+                      <div class="col-md-1 col-lg-5">
+                        <div class="form-group">
+                            <label for="lname">last Name</label>
+                            <input type="text" class="form-control"  required [(ngModel)]="product.lname" name="lname">
+                        </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="card card-default">
+        <div class="card-header">
+            <h4 class="card-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    <i class="glyphicon glyphicon-lock text-gold"></i>
+                    <b>ข้อมูลที่อยู่</b>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="collapse show">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>กรุณาใส่ข้อมูลที่อยู่ตามประเภทที่กำหนด</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label">ที่อยู่</label>
+                            <input type="text" class="form-control" required [(ngModel)]="product.address" name="address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label class="control-label">ตำลบ/เขต</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="form-group">
+                        <label class="control-label">อำเภอ</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                  <div class="col-md-2 col-lg-3">
+                       <div class="form-group">
+                            <label for="NAME_TH">จังหวัด</label>
+                            <select class="form-control">
+                              <option disabled>Select Website</option>
+                              <option>Choose Website</option>
+                              <option *ngFor="let provine of provinces">{{provine.NAME_TH}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                      <div class="form-group">
+                          <label class="control-label">Zip Code</label>
+                          <input type="text" class="form-control" />
+                      </div>
+                  </div>
+                </div>  
+                </div>    
+              </div>
     </div>
-    <div class="form-group">
-      <label for="title">title   :</label>
-      <input type="text" class="form-control" required [(ngModel)]="product.title" name="title">
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="pull-right">
+            <a type="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i>Save</a>
+            <a type="button" class="btn btn-warning btn-lg" (click)="gotolist()"><i class="fa fa-arrow-up"></i>Back</a>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="fname">First-name   :</label>
-      <input type="text" class="form-control" required [(ngModel)]="product.fname" name="fname">
-    </div>
-    <div class="form-group">
-      <label for="lname">Last-name   :</label>
-      <input type="text" class="form-control" required [(ngModel)]="product.lname" name="lname">
-    </div>
-    <div class="form-group">
-      <label for="address">Address   :</label>
-      <input type="text" class="form-control" required [(ngModel)]="product.address" name="address">
-    </div>
-    <button type="submit" class="btn btn-success">Add</button>
-    <button type="submit" class="btn btn-secondary" (click)="gotolist()">Back</button>
-  </form>
 </div>
+</form>
+
+
+

@@ -27,4 +27,7 @@ export class NgserviceService {
   deleteBdyIdFromRemote(id: number): Observable<any> {
     return this._http.delete<any>('http://localhost:8088/deleteuserbyid/' + id);
   }
+  fetchProvinceFromRemote(): Observable<any>{
+    return this._http.get<any>('http://localhost:8088/getprovince');
+  }
 }

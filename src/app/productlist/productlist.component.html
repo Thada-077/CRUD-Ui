@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">UserCrud</a>
+  <a class="navbar-brand" href="productlist">UserCrud</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,7 +31,7 @@
   </thead>
   <tbody>
   <tr *ngIf="products.length ==0">
-    <td colspan="5" style="text-align: center"><h2>There are no products yet</h2></td>
+    <td colspan="6" style="text-align: center"><h2>There are no Users yet</h2></td>
   </tr>
   <tr *ngFor="let product of products">
     <th >{{product.id}}</th>
