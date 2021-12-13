@@ -30,4 +30,10 @@ export class NgserviceService {
   fetchProvinceFromRemote(): Observable<any>{
     return this._http.get<any>('http://localhost:8088/getprovince');
   }
+  fetchDistrictFromRemote(): Observable<any>{
+    return this._http.get<any>('http://localhost:8088/getdistrict');
+  }
+  fetchsubdistrictFromRemote(): Observable<any>{
+    return this._http.get<any>('http://localhost:8088/getsubdistrict');
+  }
 }

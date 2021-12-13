@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, AfterViewInit} from '@angular/core';
 import {NgserviceService} from '../ngservice.service';
 import {Router} from '@angular/router';
 import {Product} from '../product';
-
+import { Province } from '../province';
+import {MatSort, Sort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {LiveAnnouncer} from '@angular/cdk/a11y'
 
 @Component({
   selector: 'app-productlist',
@@ -10,14 +13,10 @@ import {Product} from '../product';
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
-
-
   products: Array<Product> = [];
-  constructor(private _route: Router, private _service: NgserviceService) { }
+
+  constructor(private _route: Router, private _service: NgserviceService, private _liveAnnouncer: LiveAnnouncer) { }
   ngOnInit(): void {
-   // this.products =  this._service.fetchProductListFromRemote().subscribe(
-   //    data=>console.log("Response received"),
-   //    error => console.log("Exception occurred")
     this.getProducts();
   }
 
@@ -50,10 +49,6 @@ export class ProductlistComponent implements OnInit {
 
   }
 
-  /* I uses delete request, but you can use post as well, it will work, the problem I have is the delete post has no return body,
-   so I can use success or error message with it, what ever I do it end up in the exception, for the time being,
-   to refresh the product list I added it with the exception until I resolve it */
-
   deleteProduct(id: number) {
     if (confirm('Are you sure ?'))
   return this._service.deleteBdyIdFromRemote(id).subscribe(
@@ -63,4 +58,5 @@ export class ProductlistComponent implements OnInit {
     error=> {console.log("Exception occured 2"); this.getProducts()}
    )
   }
+
 }

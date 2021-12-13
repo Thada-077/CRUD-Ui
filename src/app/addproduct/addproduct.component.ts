@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
+import { District } from '../district';
 import {NgserviceService} from '../ngservice.service';
 import {Product} from '../product';
 import { Province } from '../province';
-
+import { Subdistrict } from '../subdistrict';
 
 @Component({
   selector: 'app-addproduct',
@@ -14,10 +15,15 @@ import { Province } from '../province';
 export class AddproductComponent implements OnInit {
   product = new Product();
   provinces: Array<Province> = [];
+  districts: Array<District> = [];
+  subdistricts: Array<Subdistrict> = [];
+  model: any;
   constructor(private _route: Router,private _service: NgserviceService) { }
 
   ngOnInit(): void {
     this.getProvince();
+    this.getDistrict();
+    this.getSubdistrict()
   }
 
 addformsubmit()
@@ -32,21 +38,24 @@ this._service.addToRemote(this.product).subscribe
 )
 }
 
+gotolist() {
+  this._route.navigate(['productlist']);
+}
+
 getProvince() {
   this._service.fetchProvinceFromRemote().subscribe(
     data => this.provinces = data, error => console.log("Exception occurred 1"),
   )
 }
-isEmpty()
-  {
-    if (this.provinces == null)
-    {
-      return true;
-    }
-    else { return false; }
-  }
+getDistrict() {
+  this._service.fetchDistrictFromRemote().subscribe(
+    data => this.districts = data, error => console.log("Exception occurred 1"),
+  )
+}
+getSubdistrict() {
+  this._service.fetchsubdistrictFromRemote().subscribe(
+    data => this.subdistricts = data, error => console.log("Exception occurred 1"),
+  )
+}
 
-  gotolist() {
-    this._route.navigate(['productlist']);
-  }
 }
