@@ -84,6 +84,7 @@
             </div>
           </div>
       </div>
+
       <div class="card card-default">
         <div class="card-header">
             <h4 class="card-title">
@@ -104,7 +105,7 @@
                     <div class="col-md-3 col-lg-12">
                         <div class="form-group">
                             <label class="control-label">ที่อยู่</label>
-                            <input type="text" class="form-control" required [(ngModel)]="product.address" name="address">
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -123,7 +124,7 @@
                   <div class="col-md-3 col-lg-3">
                       <div class="form-group">
                           <label class="nameTh">อำเภอ</label>
-                          <select class="form-control" >
+                          <select class="form-control">
                             <option disabled>เลือกอำเภอของคุณ</option>
                             <option>  </option>
                             <option *ngFor="let district of districts">{{district.nameTh}}</option>

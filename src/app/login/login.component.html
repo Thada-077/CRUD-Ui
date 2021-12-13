@@ -9,21 +9,23 @@
             <p>Login or register from here to access.</p>
          </div>
       </div>
+      <form #loginform="ngForm" (ngSubmit)="loginUser()">
       <div class="main">
          <div class="col-md-6 col-sm-12">
             <div class="login-form">
                <form>
                   <div class="form-group">
-                     <label>User Name</label>
-                     <input type="text" class="form-control" placeholder="User Name">
+                     <label for="email">Email : </label>
+                     <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="user.emailId">
                   </div>
                   <div class="form-group">
-                     <label>Password</label>
-                     <input type="password" class="form-control" placeholder="Password">
+                     <label for="pwd">Password</label>
+                     <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="user.password">
                   </div>
-                  <button type="submit" class="btn btn-black" (click)="gotolist()">Login</button>
+                  <button type="submit" class="btn btn-black">Login</button>
                   <button type="submit" class="btn btn-secondary" (click)="gotoregister()">Register</button>
                </form>
             </div>
          </div>
       </div>
+      </form>

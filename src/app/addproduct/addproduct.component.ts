@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
+import { Address } from '../address';
 import { District } from '../district';
 import {NgserviceService} from '../ngservice.service';
 import {Product} from '../product';
@@ -17,7 +18,8 @@ export class AddproductComponent implements OnInit {
   provinces: Array<Province> = [];
   districts: Array<District> = [];
   subdistricts: Array<Subdistrict> = [];
-  model: any;
+  addresss: Array<Address> = [];
+
   constructor(private _route: Router,private _service: NgserviceService) { }
 
   ngOnInit(): void {
@@ -57,5 +59,4 @@ getSubdistrict() {
     data => this.subdistricts = data, error => console.log("Exception occurred 1"),
   )
 }
-
 }

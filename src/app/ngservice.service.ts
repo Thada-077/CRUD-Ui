@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { User } from './user';
 
 class Product {
 }
@@ -35,5 +36,11 @@ export class NgserviceService {
   }
   fetchsubdistrictFromRemote(): Observable<any>{
     return this._http.get<any>('http://localhost:8088/getsubdistrict');
+  }
+  public loginUserFromRemote(user: User):Observable<any>{
+    return this._http.post<any>("http://localhost:8088/login",user)
+  }
+  public registerUserFromRemote(user: User):Observable<any>{
+    return this._http.post<any>("http://localhost:8088/registeruser",user)
   }
 }
