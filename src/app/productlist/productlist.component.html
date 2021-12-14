@@ -9,37 +9,33 @@
       <li class="nav-item active">
         <a class="nav-link" href="addproduct"> - Add <span class="sr-only"></span></a>
       </li>
+      <li class="nav-item active">
+        <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
 <div class="container">
 <h2 class="text-center mt-5">Users List</h2>
-<table class="table table-striped mt-5">
-  <thead>
-  <tr class="table-success">
-    <th scope="col">ID</th>
-    <th scope="col">Title</th>
-    <th scope="col">First-name</th>
-    <th scope="col">Last-name</th>
-    <th scope="col">Address</th>
-    <th scope="col">Actions</th>
+<table class="table table-striped mt-5" >
+  <thead >
+  <tr class="table-success ">
+    <th scope="col" class="border border-success">ID</th>
+    <th scope="col" class="border border-success">Title</th>
+    <th scope="col" class="border border-success">First-name</th>
+    <th scope="col" class="border border-success">Last-name</th>
+    <th scope="col" class="border border-success">Address</th>
+    <th scope="col" class="border border-success">Actions</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngIf="products.length ==0">
-    <td colspan="6" style="text-align: center"><h2>There are no Users yet</h2></td>
-  </tr>
   <tr *ngFor="let product of products">
-    <th >{{product.id}}</th>
-    <td>{{product.title}}</td>
-    <td>{{product.fname}}</td>
-    <td>{{product.lname}}</td>
-    <td>{{product.address}}</td>
-    <td>
+    <th class="border border-success">{{product.id}}</th>
+    <td class="border border-success">{{product.title}}</td>
+    <td class="border border-success">{{product.fname}}</td>
+    <td class="border border-success">{{product.lname}}</td>
+    <td class="border border-success">{{product.address}}</td>
+    <td class="border border-success">
       <button type="button" class="btn btn-outline-info" (click)="goToViewProduct(product.id)">View</button>&nbsp;
       <button type="button" class="btn btn-outline-primary" (click)="goToUpdateProduct(product.id)">Edit</button>&nbsp;
       <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(product.id)">Delete</button>
@@ -47,4 +43,14 @@
   </tr>
   </tbody>
 </table>
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+  </ngb-pagination>
+
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>
 

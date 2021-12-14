@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 import { Address } from '../address';
 import { District } from '../district';
 import {NgserviceService} from '../ngservice.service';
@@ -33,6 +34,7 @@ addformsubmit()
 this._service.addToRemote(this.product).subscribe
 (
   data =>{
+    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')  
     console.log("Data added successfully");
     this._route.navigate(['productlist']);
   },
